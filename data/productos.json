@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Procesador AMD Ryzen 5 5600X",
+    "precio": 250000,
+    "categoria": "Procesadores",
+    "imagen": "assets/img/ryzen.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Tarjeta Gráfica Gigabyte Geforce RTX 4060",
+    "precio": 600000,
+    "categoria": "Placas de Video",
+    "imagen": "assets/img/rtx4060gigabyte.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Memoria RAM kingston Fury 16GB 5200MHz",
+    "precio": 10000000,
+    "categoria": "Memorias",
+    "imagen": "assets/img/ram_ddr5_kingston_fury_16GB_5200MHZ.jpg"
+  }
+]

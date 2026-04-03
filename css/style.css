@@ -1,11 +1,11 @@
 :root {
-    --fondo-oscuro: #111827;
-    --fondo-tarjetas: #1f2937;
-    --texto-principal: #f3f4f6;
-    --texto-secundario: #9ca3af;
-    --acento-azul: #3b82f6;
-    --acento-verde: #10b981;
-    --hover-boton: #2563eb;
+    --fondo-oscuro: #170b13;
+    --fondo-tarjetas: #2b1422;
+    --texto-principal: #f3e8ee;
+    --texto-secundario: #b598a8;
+    --acento-purpura: #9d4edd;
+    --acento-bordo: #900c3f;
+    --hover-boton: #5c0829;
 }
 
 * {
@@ -14,26 +14,29 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
     background-color: var(--fondo-oscuro);
     color: var(--texto-principal);
 }
+
 .contenedor {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
 }
+
 .header-principal {
     background-color: var(--fondo-tarjetas);
     padding: 1.5rem 2rem;
     display: flex; 
     justify-content: space-between; 
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    align-items: center; 
+    box-shadow: 0 4px 10px rgba(43, 20, 34, 0.5); 
 }
 
 .header-principal h1 {
-    color: var(--acento-azul);
+    color: var(--acento-purpura);
 }
 
 .lista-clientes {
@@ -48,7 +51,7 @@ body {
     background-color: var(--fondo-tarjetas);
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    border: 1px solid #374151;
+    border: 1px solid #4a253a; 
 }
 
 .grid-productos {
@@ -57,6 +60,7 @@ body {
     gap: 2rem;
     margin-top: 1.5rem;
 }
+
 .tarjeta-producto {
     background-color: var(--fondo-tarjetas);
     padding: 1.5rem;
@@ -64,11 +68,12 @@ body {
     display: flex;
     flex-direction: column; 
     justify-content: space-between; 
-    transition: transform 0.2s; 
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tarjeta-producto:hover {
     transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(157, 78, 221, 0.15);
 }
 
 .tarjeta-producto img {
@@ -77,25 +82,26 @@ body {
     object-fit: cover; 
     border-radius: 8px;
     margin-bottom: 1rem;
+    background-color: var(--fondo-oscuro); 
 }
 
 .tarjeta-producto .categoria {
     font-size: 0.8rem;
-    color: var(--acento-azul);
+    color: var(--acento-purpura);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .tarjeta-producto .precio {
     font-size: 1.5rem;
-    color: var(--acento-verde);
+    color: var(--acento-bordo);
     font-weight: bold;
     margin: 1rem 0;
 }
 
 .btn-agregar {
-    background-color: var(--acento-azul);
-    color: white;
+    background-color: var(--acento-bordo);
+    color: var(--texto-principal);
     border: none;
     padding: 0.8rem;
     border-radius: 6px;
