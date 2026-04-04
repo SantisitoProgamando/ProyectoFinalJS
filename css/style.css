@@ -4,7 +4,7 @@
     --texto-principal: #f3e8ee;
     --texto-secundario: #b598a8;
     --acento-purpura: #9d4edd;
-    --acento-bordo: #900c3f;
+    --acento-bordo-brillante: #a01a35; 
     --hover-boton: #5c0829;
 }
 
@@ -28,7 +28,7 @@ body {
 
 .header-principal {
     background-color: var(--fondo-tarjetas);
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 3rem; 
     display: flex; 
     justify-content: space-between; 
     align-items: center; 
@@ -36,86 +36,145 @@ body {
 }
 
 .header-principal h1 {
-    color: var(--acento-purpura);
+    color: var(--texto-principal); 
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer-principal {
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: var(--fondo-tarjetas);
+    border-top: 1px solid rgba(157, 78, 221, 0.2);
+    display: flex;
+    justify-content: center;
+}
+
+.seccion-clientes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.seccion-clientes:hover {
+    opacity: 1;
+}
+
+.seccion-clientes h2 {
+    font-size: 0.9rem;
+    color: var(--texto-secundario);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .lista-clientes {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     list-style: none; 
-    margin-top: 1rem;
-    margin-bottom: 3rem;
 }
 
 .cliente-item {
-    background-color: var(--fondo-tarjetas);
+    background-color: var(--fondo-oscuro);
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    border: 1px solid #4a253a; 
+    border: 1px solid rgba(157, 78, 221, 0.3); 
+    font-size: 0.8rem;
+    color: var(--texto-secundario);
+}
+
+.cliente-item strong {
+    color: var(--acento-purpura);
 }
 
 .grid-productos {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: 1.5rem;
 }
 
 .tarjeta-producto {
     background-color: var(--fondo-tarjetas);
-    padding: 1.5rem;
-    border-radius: 12px;
+    padding: 2rem; 
+    border-radius: 16px;
     display: flex;
     flex-direction: column; 
     justify-content: space-between; 
     transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(157, 78, 221, 0.05); 
 }
 
 .tarjeta-producto:hover {
     transform: translateY(-5px); 
-    box-shadow: 0 8px 15px rgba(157, 78, 221, 0.15);
+    box-shadow: 0 10px 25px rgba(157, 78, 221, 0.15);
 }
 
 .tarjeta-producto img {
     width: 100%;
-    height: 200px;
-    object-fit: cover; 
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    background-color: var(--fondo-oscuro); 
+    height: 250px; 
+    object-fit: contain;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    background-color: white;
 }
 
 .tarjeta-producto .categoria {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--acento-purpura);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+}
+
+.tarjeta-producto h3 {
+    font-size: 1.3rem;
+    margin: 0.8rem 0;
+    line-height: 1.3;
 }
 
 .tarjeta-producto .precio {
-    font-size: 1.5rem;
-    color: var(--acento-bordo);
+    font-size: 2rem; 
+    color: var(--acento-bordo-brillante); 
     font-weight: bold;
     margin: 1rem 0;
 }
-
-.btn-agregar {
-    background-color: var(--acento-bordo);
+.btn-agregar, #btn-registrar {
+    background-color: var(--acento-bordo-brillante); 
     color: var(--texto-principal);
     border: none;
-    padding: 0.8rem;
-    border-radius: 6px;
+    padding: 1rem; 
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.2s;
     width: 100%;
 }
 
-.btn-agregar:hover {
-    background-color: var(--hover-boton);
+#btn-registrar {
+    background-color: transparent; 
+    border: 1px solid var(--acento-bordo-brillante);
+    color: var(--acento-bordo-brillante);
 }
 
-/*ESTILOS DEL CARRITO*/
+.btn-agregar:hover, #btn-registrar:hover {
+    background-color: var(--hover-boton);
+    color: white;
+}
+
+.btn-eliminar {
+    background-color: transparent;
+    color: var(--texto-secundario);
+    border: none;
+    cursor: pointer;
+}
+
+.btn-eliminar:hover {
+    color: #dc2626;
+}
 .modal-oculto {
     display: none; 
 }
