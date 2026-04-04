@@ -159,3 +159,27 @@ document.getElementById('contenedor-items-carrito').addEventListener('click', (e
         actualizarInterfazCarrito();
     }
 });
+
+document.getElementById('btn-comprar').addEventListener('click', () => {
+    if(carrito.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Carrito vacío',
+            text: 'Agrega productos a tu carrito antes de finalizar la compra.',
+            background: '#1f2937',
+            color: '#fff'
+        });
+        return;
+    }
+    else {
+        Swal.fire({
+            icon: 'success',
+            title: '¡Compra exitosa!',
+            text: 'Gracias por tu compra. ¡Vuelve pronto!',
+            background: '#1f2937',
+            color: '#fff'
+        });
+        carrito = [];
+        actualizarInterfazCarrito();
+    }
+});
