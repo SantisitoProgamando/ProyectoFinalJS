@@ -22,28 +22,65 @@ async function obtenerProductos(){
     }
 }
 
-function renderizarProductos(productos){
+function renderizarProductos(productosParaRenderizar){
     const contenedor = document.getElementById('contenedor-productos');
+    if (!contenedor) return; 
+    
     contenedor.innerHTML = '';
+    const categorias = [
+        { id: 'Placas de Video', titulo: 'Placas de Video Recomendadas' },
+        { id: 'Procesadores', titulo: 'Procesadores Recomendados' },
+        { id: 'Perifericos', titulo: 'Periféricos Destacados' },
+        { id: 'Monitores', titulo: 'Monitores Recomendados' },
+        { id: 'Memorias', titulo: 'Memorias RAM' }
+    ];
 
-    productos.forEach(producto => {
-        const tarjeta = document.createElement('article');
-        tarjeta.className = 'tarjeta-producto';
-        tarjeta.innerHTML = `
-            <div>
+    categorias.forEach(categoriaObj => {
+        const productosDeCategoria = productosParaRenderizar.filter(
+            prod => prod.categoria.toLowerCase() === categoriaObj.id.toLowerCase()
+        );
+
+        if (productosDeCategoria.length === 0) return;
+
+        const seccionFila = document.createElement('div');
+        seccionFila.className = 'fila-categoria';
+
+        const titulo = document.createElement('h2');
+        titulo.className = 'titulo-categoria';
+        titulo.innerText = categoriaObj.titulo;
+        seccionFila.appendChild(titulo);
+
+        const carrusel = document.createElement('div');
+        carrusel.className = 'carrusel-productos';
+
+        productosDeCategoria.forEach(producto => {
+            const tarjeta = document.createElement('article');
+            tarjeta.className = 'tarjeta-producto';
+
+            
+            tarjeta.innerHTML = `
+                <div class="tarjeta-header">
+                    <i class="far fa-heart btn-favorito" title="Agregar a favoritos"></i>
+                </div>
                 <img src="${producto.imagen}" alt="${producto.nombre}">
-                <span class="categoria">${producto.categoria}</span>
-                <h3>${producto.nombre}</h3>
-                <p class="precio">$${producto.precio.toLocaleString()}</p>
-            </div>
-            <button 
-                class="btn-agregar"
-                data-id="${producto.id}" 
-            >
-                Añadir al carrito
-            </button>
-        `;
-        contenedor.appendChild(tarjeta);
+                
+                <div class="tags-info">
+                    <span class="tag-envio">Llega HOY</span>
+                    <span class="tag-stock">EN STOCK</span>
+                </div>
+                
+                <h3 title="${producto.nombre}">${producto.nombre}</h3>
+                
+                <div class="precios">
+                    <span class="precio-nuevo">$${producto.precio.toLocaleString()}</span>
+                </div>
+                
+                <button class="btn-agregar" data-id="${producto.id}">Añadir al carrito</button>
+            `;
+            carrusel.appendChild(tarjeta);
+        });
+        seccionFila.appendChild(carrusel);
+        contenedor.appendChild(seccionFila);
     });
 }
 
@@ -184,18 +221,11 @@ document.getElementById('btn-comprar').addEventListener('click', () => {
     }
 });
 
-
-// Barra de busqueda
-
-// --- LÓGICA DE BÚSQUEDA Y MENÚ DESPLEGABLE ---
-
 const inputBusqueda = document.getElementById('input-busqueda');
 const contenedorResultados = document.getElementById('resultados-busqueda');
 
-// 1. Escuchamos al usuario escribir
 inputBusqueda.addEventListener('input', filtrarProductos);
 
-// 2. Cerramos el menú si hace clic en cualquier otro lado de la pantalla
 document.addEventListener('click', (evento) => {
     if (!evento.target.closest('.busqueda-area')) {
         contenedorResultados.classList.add('dropdown-oculto');
@@ -204,20 +234,14 @@ document.addEventListener('click', (evento) => {
 
 function filtrarProductos() {
     const terminoBusqueda = inputBusqueda.value.toLowerCase().trim();
-
-    // Si el input está vacío, limpiamos el dropdown y mostramos todo el catálogo original
     if (terminoBusqueda === "") {
         contenedorResultados.classList.add('dropdown-oculto');
         renderizarProductos(stockProductos); 
         return;
     }
-
-    // Filtramos buscando el texto
     const productosFiltrados = stockProductos.filter(producto => {
         return producto.nombre.toLowerCase().includes(terminoBusqueda);
     });
-
-    // Dibujamos el dropdown
     renderizarDropdown(productosFiltrados);
 }
 

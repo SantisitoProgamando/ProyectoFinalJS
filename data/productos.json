@@ -19,5 +19,26 @@
     "precio": 10000000,
     "categoria": "Memorias",
     "imagen": "assets/img/ram_ddr5_kingston_fury_16GB_5200MHZ.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Tarjeta Grafica Asus RTX 3060",
+    "precio": 350000,
+    "categoria": "Placas de Video" ,
+    "imagen": "assets/img/rtx3060.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Teclado Asus M602 Falchion",
+    "precio": 250108,
+    "categoria": "Perifericos",
+    "imagen": "assets/img/teclado_asus_M602_Falchion.jpg"
+  },
+  {
+    "id": 6 ,
+    "nombre": "Monitor Gaming Samsung Oddysey G5 25 Pulgadas FHD 240hz",
+    "precio": 350000,
+    "categoria": "Monitores" ,
+    "imagen": "assets/img/samsung_odyssey_g4_240hz_fhd.jpg"
   }
 ]
