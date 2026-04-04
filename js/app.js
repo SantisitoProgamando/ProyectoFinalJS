@@ -5,15 +5,15 @@ document.addEventListener('DOMContentLoaded', obtenerProductos);
 async function obtenerProductos(){
     try {
         const respuesta = await fetch('data/productos.json');
-        if (!respuesta.ok){throw new error('No se pudo conectar a la base de datos');}
+        if (!respuesta.ok){throw new Error('No se pudo conectar a la base de datos');}
 
         const productos = await respuesta.json();
         renderizarProductos(productos);
     } catch(error)
     {
         Swal.fire({
-            icon: 'Error',
-            tittle: 'Error critico',
+            icon: 'error',
+            title: 'Error critico',
             text: error.message,
             background: '#1f2937',
             color: '#fff'
