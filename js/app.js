@@ -225,11 +225,17 @@ function renderizarDropdown(productos) {
     contenedorResultados.innerHTML = ''; 
 
     if (productos.length === 0) {
-        contenedorResultados.classList.add('dropdown-oculto');
+        contenedorResultados.classList.remove('dropdown-oculto');
+        contenedorResultados.innerHTML = `
+            <div style="padding: 1.5rem; text-align: center; color: var(--texto-secundario);">
+                <i class="fas fa-search-minus" style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--acento-bordo-brillante);"></i>
+                <p>No encontramos componentes para "<strong>${inputBusqueda.value}</strong>"</p>
+            </div>
+        `;
         return;
     }
-
     contenedorResultados.classList.remove('dropdown-oculto');
+
     productos.forEach(producto => {
         const div = document.createElement('div');
         div.className = 'item-resultado';
@@ -237,10 +243,11 @@ function renderizarDropdown(productos) {
             <img src="${producto.imagen}" alt="${producto.nombre}">
             <span>${producto.nombre}</span>
         `;
+        
         div.addEventListener('click', () => {
             inputBusqueda.value = producto.nombre; 
-            renderizarProductos([producto]);
-            contenedorResultados.classList.add('dropdown-oculto');
+            renderizarProductos([producto]); 
+            contenedorResultados.classList.add('dropdown-oculto'); 
         });
 
         contenedorResultados.appendChild(div);
