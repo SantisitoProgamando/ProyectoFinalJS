@@ -183,3 +183,66 @@ document.getElementById('btn-comprar').addEventListener('click', () => {
         actualizarInterfazCarrito();
     }
 });
+
+
+// Barra de busqueda
+
+// --- LÓGICA DE BÚSQUEDA Y MENÚ DESPLEGABLE ---
+
+const inputBusqueda = document.getElementById('input-busqueda');
+const contenedorResultados = document.getElementById('resultados-busqueda');
+
+// 1. Escuchamos al usuario escribir
+inputBusqueda.addEventListener('input', filtrarProductos);
+
+// 2. Cerramos el menú si hace clic en cualquier otro lado de la pantalla
+document.addEventListener('click', (evento) => {
+    if (!evento.target.closest('.busqueda-area')) {
+        contenedorResultados.classList.add('dropdown-oculto');
+    }
+});
+
+function filtrarProductos() {
+    const terminoBusqueda = inputBusqueda.value.toLowerCase().trim();
+
+    // Si el input está vacío, limpiamos el dropdown y mostramos todo el catálogo original
+    if (terminoBusqueda === "") {
+        contenedorResultados.classList.add('dropdown-oculto');
+        renderizarProductos(stockProductos); 
+        return;
+    }
+
+    // Filtramos buscando el texto
+    const productosFiltrados = stockProductos.filter(producto => {
+        return producto.nombre.toLowerCase().includes(terminoBusqueda);
+    });
+
+    // Dibujamos el dropdown
+    renderizarDropdown(productosFiltrados);
+}
+
+function renderizarDropdown(productos) {
+    contenedorResultados.innerHTML = ''; 
+
+    if (productos.length === 0) {
+        contenedorResultados.classList.add('dropdown-oculto');
+        return;
+    }
+
+    contenedorResultados.classList.remove('dropdown-oculto');
+    productos.forEach(producto => {
+        const div = document.createElement('div');
+        div.className = 'item-resultado';
+        div.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <span>${producto.nombre}</span>
+        `;
+        div.addEventListener('click', () => {
+            inputBusqueda.value = producto.nombre; 
+            renderizarProductos([producto]);
+            contenedorResultados.classList.add('dropdown-oculto');
+        });
+
+        contenedorResultados.appendChild(div);
+    });
+}
