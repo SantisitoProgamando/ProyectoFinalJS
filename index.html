@@ -13,7 +13,7 @@
 <body>
     <header class="header-principal">
         <h1>TechMarket Componentes</h1>
-        <div class="carrito-info">
+        <div class="carrito-info" id="btn-abrir-carrito" style="cursor: pointer;">
             <span>Items: <b id="contador-carrito">0</b></span>
         </div>
     </header>
@@ -28,6 +28,20 @@
             <div id="contenedor-productos" class="grid-productos"></div>
         </section>
     </main>
+
+    <div id="modal-carrito" class="modal-oculto">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h2>Tu carrito</h2>
+                <button id="btn-cerrar-carrito" class="btn-cerrar">X</button>
+            </div>
+            <div id="contenedor-items-carrito"></div>
+            <div class="modal-footer">
+                <p class="total-texto">Total: $<span id="precio-total">0</span></p>
+                <button id="btn-comprar" class="btn-agregar">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
     <script src="js/app.js"></script>
     <script src="js/clientes.js"></script>
 </body>
